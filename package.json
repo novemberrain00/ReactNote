@@ -2,7 +2,7 @@
   "name": "react-note",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/novemberrain00/react-note.git",
+  "homepage": "https://github.com/novemberrain00/ReactNote.git",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
