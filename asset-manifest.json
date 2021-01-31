@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/novemberrain00/ReactNote.git/static/css/main.6d92845a.chunk.css",
-    "main.js": "/novemberrain00/ReactNote.git/static/js/main.59629ad1.chunk.js",
-    "main.js.map": "/novemberrain00/ReactNote.git/static/js/main.59629ad1.chunk.js.map",
-    "runtime-main.js": "/novemberrain00/ReactNote.git/static/js/runtime-main.5bb1003f.js",
-    "runtime-main.js.map": "/novemberrain00/ReactNote.git/static/js/runtime-main.5bb1003f.js.map",
-    "static/js/2.e95a5507.chunk.js": "/novemberrain00/ReactNote.git/static/js/2.e95a5507.chunk.js",
-    "static/js/2.e95a5507.chunk.js.map": "/novemberrain00/ReactNote.git/static/js/2.e95a5507.chunk.js.map",
-    "index.html": "/novemberrain00/ReactNote.git/index.html",
-    "static/css/main.6d92845a.chunk.css.map": "/novemberrain00/ReactNote.git/static/css/main.6d92845a.chunk.css.map",
-    "static/js/2.e95a5507.chunk.js.LICENSE.txt": "/novemberrain00/ReactNote.git/static/js/2.e95a5507.chunk.js.LICENSE.txt"
+    "main.css": "/novemberrain00/ReactNote.git/gh-pages/static/css/main.6d92845a.chunk.css",
+    "main.js": "/novemberrain00/ReactNote.git/gh-pages/static/js/main.59629ad1.chunk.js",
+    "main.js.map": "/novemberrain00/ReactNote.git/gh-pages/static/js/main.59629ad1.chunk.js.map",
+    "runtime-main.js": "/novemberrain00/ReactNote.git/gh-pages/static/js/runtime-main.944d14a2.js",
+    "runtime-main.js.map": "/novemberrain00/ReactNote.git/gh-pages/static/js/runtime-main.944d14a2.js.map",
+    "static/js/2.e95a5507.chunk.js": "/novemberrain00/ReactNote.git/gh-pages/static/js/2.e95a5507.chunk.js",
+    "static/js/2.e95a5507.chunk.js.map": "/novemberrain00/ReactNote.git/gh-pages/static/js/2.e95a5507.chunk.js.map",
+    "index.html": "/novemberrain00/ReactNote.git/gh-pages/index.html",
+    "static/css/main.6d92845a.chunk.css.map": "/novemberrain00/ReactNote.git/gh-pages/static/css/main.6d92845a.chunk.css.map",
+    "static/js/2.e95a5507.chunk.js.LICENSE.txt": "/novemberrain00/ReactNote.git/gh-pages/static/js/2.e95a5507.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.5bb1003f.js",
+    "static/js/runtime-main.944d14a2.js",
     "static/js/2.e95a5507.chunk.js",
     "static/css/main.6d92845a.chunk.css",
     "static/js/main.59629ad1.chunk.js"
