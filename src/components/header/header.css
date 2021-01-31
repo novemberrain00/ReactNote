@@ -1,0 +1,11 @@
+.title {
+    font-size: 48px;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+}

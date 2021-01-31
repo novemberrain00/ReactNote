@@ -1,0 +1,59 @@
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+    width: 24px; /* ширина для вертикального скролла */
+    height: 6px; /* высота для горизонтального скролла */
+    background-color: #fff;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 14, 104);;
+    border-radius: 9em;
+    width: 100px;
+}
+
+.note {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-title {
+    margin-top: 0;
+}
+
+.note-edit {
+    color: rgb(1, 188, 203)
+}
+
+.note-delete {
+    color: red;
+    margin-left: 5px;
+}
+
+.note-delete:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.note-edit:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.note-descr {
+    margin: 0;
+    overflow: auto; 
+}
+
+.date {
+    display: block;
+    margin: 0 20px 0 auto;
+    color: rgb(209, 209, 209)
+}
