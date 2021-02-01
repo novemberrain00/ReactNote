@@ -38,16 +38,20 @@ export default class App extends Component {
     showEditor() {
         this.setState({editorShowed: true})
         this.setState({editorTitle: "Добавить заметку"})
+        this.setState(
+            {
+                editableTitle: "",
+                editableText: "",
+                title: "",
+                text: ""
+            }
+        )
     }
 
     closeEditor() {
         this.setState(
             {
-                editorShowed: false,
-                editableTitle: "",
-                editableText: "",
-                title: "",
-                text: ""
+                editorShowed: false
             }
         )
     }
