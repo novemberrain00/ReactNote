@@ -4,3 +4,25 @@
     font-style: italic;
     transform: translateY(25vh);
 }
+
+@media screen and (max-width: 1200px) {
+    .empty {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .empty {
+        font-size: 6vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        max-width: 95% !important;
+    }
+    .empty {
+        font-size: 8vw;
+    }
+}
+

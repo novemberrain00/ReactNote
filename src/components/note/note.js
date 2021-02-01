@@ -14,11 +14,11 @@ export default class Note extends Component {
         return (
             <div className="note" data-id={id}> 
                 <div className="note-header">
-                    <h2 className="note-title">{title}</h2>
                     <span className="date">{date} | {time}</span>
                     <span onClick={editNote} className="note-edit">Редактировать |</span>  
                     <span onClick={()=>{removeNote(id)}} className="note-delete">Удалить</span>   
                 </div>
+                <h2 className="note-title">{title}</h2>
                 <p className="note-descr">
                     {text}
                 </p>

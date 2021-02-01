@@ -46,7 +46,7 @@
 
 .note-editor {
     width: 40%;
-    height: 88%;
+    height: max-content;
     background: #ffffff;
     border-radius: 20px;
     padding: 20px;
@@ -75,8 +75,8 @@
 .editor-text {
     border: 3px solid #c6c6c6;
     resize: none;
-    width: 97%;
-    height: 100%;
+    width: -webkit-fill-available;
+    height: 20vw;
     padding: 10px;
     font-size: 15px;
 }
@@ -88,4 +88,19 @@
 
 .editor-content {
     height: 40%;
+}
+
+@media screen and (max-width: 600px) {
+    .note-editor {
+        width: 60%;
+    }
+    
+    .editor-text {
+        border: 3px solid #c6c6c6;
+        resize: none;
+        width: -webkit-fill-available;
+        height: 60vw;
+        padding: 10px;
+        font-size: 15px;
+    }
 }
