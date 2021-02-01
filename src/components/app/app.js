@@ -75,7 +75,7 @@ export default class App extends Component {
     }
 
     addNote() {
-       // this.setState({editableTitle: "", editableText: ""});
+       //this.setState({editableTitle: "", editableText: ""});
         const { data } = this.state;
 
         const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours();
