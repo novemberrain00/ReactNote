@@ -12,9 +12,38 @@ export default class App extends Component {
         this.props = props;
 
         this.id = 0;        
+        this.data = [];
+
+        async function getResource(url) {
+            let res = await fetch(url);
+        
+            if (!res.ok) {
+                throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+            }
+        
+            return await res.json();
+        }
+
+        this.postData = async (url, data) => {
+            let res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
+            });
+        
+            return await res.json();
+        };
+
+        getResource('http://localhost:3000/data')
+        .then(data => {
+            data.forEach(({title, text, data, time, id}) => {
+                this.data.push({title, text, data, time, id});
+            });
+        });
 
         this.state = {
-            data: [],
             editorShowed: false,
             editorTitle: "Добавить заметку",
             lastTitle: "",
@@ -79,7 +108,6 @@ export default class App extends Component {
     }
 
     addNote() {
-       //this.setState({editableTitle: "", editableText: ""});
         const { data } = this.state;
 
         const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours();
@@ -93,9 +121,16 @@ export default class App extends Component {
 
         data.push({title: this.state.lastTitle, text: this.state.lastText, date, time, id: this.id});
 
-        this.id++;
+        this.postData('http://localhost:3000/data', {
+            title: this.state.lastTitle, 
+            text: this.state.lastText, 
+            date, 
+            time, 
+            id: this.id
+        })
 
-        this.setState(data);
+        this.id++;
+        
         this.setState({editorTitle: 'Добавить заметку'});
         this.setState({editorShowed: false})
     }
@@ -120,7 +155,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { data, editorTitle, editorShowed, editableText, editableTitle } = this.state;
+        const { editorTitle, editorShowed, editableText, editableTitle } = this.state;
 
         let action;
         let setText;
@@ -141,7 +176,7 @@ export default class App extends Component {
                 <NotesBlock 
                     editNote={this.editNote}
                     removeNote={this.removeNote}
-                    notes={data}
+                    notes={this.data}
                 />
                 <NoteEditor 
                     editorTitle={editorTitle}
