@@ -22,7 +22,6 @@ export default class NoteEditor extends Component {
             editableText, 
             editableTitle, 
             showWarningWindow,
-            warningClassList 
         } = this.props;
 
         if(show) {
