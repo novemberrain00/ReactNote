@@ -8,7 +8,7 @@ export default class WarningWindow extends Component {
         const{ showWarningWindow } = this.props;
         if(showWarningWindow) {
             return(
-                <div className={warningClassList}>
+                <div className="warning-window">
                     Все поля должны быть заполнены
                 </div>
             )
