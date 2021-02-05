@@ -12,22 +12,6 @@ export default class App extends Component {
         this.props = props;
 
         this.id = 0;        
-        this.data = [];
-
-        this.getResource = async (url) => {
-            let res = await fetch(url);
-        
-            if (!res.ok) {
-                throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-            }
-        
-            return await res.json();
-        }
-
-        this.getResource('http://localhost:3000/data')
-        .then(data => {
-            this.setState({data})
-        });
 
         this.state = {
             data: [],
@@ -37,7 +21,8 @@ export default class App extends Component {
             lastText: "",
             editableTitle: "",
             editableText: "",
-            editable: 0
+            editable: 0,
+            showWarningWindow: false
         }
 
         this.showEditor = this.showEditor.bind(this);
@@ -64,12 +49,23 @@ export default class App extends Component {
         )
     }
 
-    closeEditor() {
-        this.setState(
-            {
-                editorShowed: false
-            }
-        )
+    closeEditor(title, text) {
+        if(!title || !text) {
+            this.setState(
+                {
+                    showWarningWindow: true
+                }
+            )
+        } else {
+            this.setState(
+                {
+                    editorShowed: false,
+                    showWarningWindow: false,
+                    lastText: "",
+                    lastTitle: ""
+                }
+            )
+        }
     }
 
     setTitle(e) {
@@ -81,46 +77,21 @@ export default class App extends Component {
     }
 
     setNewTitle(e) {
-        const { editableTitle, editable } = this.state;
+        const { data, editable } = this.state;
+        const elem = data[editable];
         this.setState({editableTitle: e.target.value});
-        // elem.title = e.target.value;
-
-        this.getResource(`http://localhost:3000/data/${editable}`)
-        .then(data => {
-            const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours();
-            const minutes = `${new Date().getMinutes()}`.length > 1 ? new Date().getMinutes() : "0" + new Date().getMinutes();
-
-            const days = `${new Date().getDate()}`.length > 1 ? new Date().getDate() : "0" + new Date().getDate();
-            const months = `${new Date().getMonth()}`.length > 1 ? new Date().getMonth() : `0${new Date().getMonth()+1}`;
-
-            const time = `${hours}:${minutes}`;
-            const date = `${days}.${months}`;
-
-            fetch(`http://localhost:3000/data/${editable}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    title: editableTitle,
-                    text: data.text,
-                    date: date,
-                    time: time
-                })
-            })
-            data.title = e.target.value;
-        });
+        elem.title = e.target.value;
     }
 
     setNewText(e) {
-        // const { data, editable } = this.state;
-        // const elem = data[editable];
-        // this.setState({editableText: e.target.value});
-        // elem.text = e.target.value;
-
+        const { data, editable } = this.state;
+        const elem = data[editable];
+        this.setState({editableText: e.target.value});
+        elem.text = e.target.value;
     }
 
     addNote() {
+        let { data, lastTitle, lastText } = this.state;
 
         const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours();
         const minutes = `${new Date().getMinutes()}`.length > 1 ? new Date().getMinutes() : "0" + new Date().getMinutes();
@@ -131,66 +102,45 @@ export default class App extends Component {
         const time = `${hours}:${minutes}`;
         const date = `${days}.${months}`;
 
-        const postData = (url, data) => {
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-        };
-
-        postData("http://localhost:3000/data", {
-            title: this.state.lastTitle, 
-            text: this.state.lastText, 
-            date, 
-            time, 
-            id: this.id
-        });
-
-        this.getResource('http://localhost:3000/data')
-        .then(data => {
-            this.setState({data})
-        });
+        if(lastTitle && lastText) {
+            data.push({title: lastTitle, text: lastText, date, time, id: this.id});
+            this.setState(data);
+            this.setState({editorTitle: 'Добавить заметку'});
+        }
 
         this.id++;
-        
-        this.setState({
-            editorTitle: 'Добавить заметку',
-            editorShowed: false
-        });
+
+        this.closeEditor(lastTitle, lastText);
     }
 
     removeNote(id) {
-        this.id = this.id > 0 ? this.id-- : 0;
-        const { data } = this.state;
-        
-        const index = data.findIndex(elem => elem.id === id);
+        this.id--;
+        this.setState(({data})=>{
+            const index = data.findIndex(elem => elem.id === id);
 
-        const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
+            const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
 
-        fetch(`http://localhost:3000/data/${id}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            return {
+                data: newArr
+            }
         })
-
-        this.setState({data: newArr});
-
     }
 
     editNote(e) {
         this.setState({editorShowed: true});
         this.setState({editorTitle: 'Редактировать заметку'});
-
         this.setState({editable: e.target.parentNode.parentNode.getAttribute('data-id')});
     }
 
     render() {
-        const { editorTitle, editorShowed, editableText, editableTitle } = this.state;
+        const { 
+            data, 
+            editorTitle, 
+            editorShowed, 
+            editableText, 
+            editableTitle, 
+            showWarningWindow
+        } = this.state;
 
         let action,
             setText,
@@ -212,7 +162,7 @@ export default class App extends Component {
                 <NotesBlock 
                     editNote={this.editNote}
                     removeNote={this.removeNote}
-                    notes={this.state.data}
+                    notes={data}
                 />
                 <NoteEditor 
                     editorTitle={editorTitle}
@@ -222,6 +172,7 @@ export default class App extends Component {
                     setTitle={setTitle}
                     editableTitle={editableTitle}
                     editableText={editableText}
+                    showWarningWindow={showWarningWindow}
                 />
             </div>
         )
