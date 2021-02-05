@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/ReactNote/static/css/main.1968fdfa.chunk.css",
-    "main.js": "/ReactNote/static/js/main.0f60e1a3.chunk.js",
-    "main.js.map": "/ReactNote/static/js/main.0f60e1a3.chunk.js.map",
+    "main.css": "/ReactNote/static/css/main.cb8dec08.chunk.css",
+    "main.js": "/ReactNote/static/js/main.4af43240.chunk.js",
+    "main.js.map": "/ReactNote/static/js/main.4af43240.chunk.js.map",
     "runtime-main.js": "/ReactNote/static/js/runtime-main.eb79158f.js",
     "runtime-main.js.map": "/ReactNote/static/js/runtime-main.eb79158f.js.map",
     "static/js/2.e95a5507.chunk.js": "/ReactNote/static/js/2.e95a5507.chunk.js",
     "static/js/2.e95a5507.chunk.js.map": "/ReactNote/static/js/2.e95a5507.chunk.js.map",
     "index.html": "/ReactNote/index.html",
-    "static/css/main.1968fdfa.chunk.css.map": "/ReactNote/static/css/main.1968fdfa.chunk.css.map",
+    "static/css/main.cb8dec08.chunk.css.map": "/ReactNote/static/css/main.cb8dec08.chunk.css.map",
     "static/js/2.e95a5507.chunk.js.LICENSE.txt": "/ReactNote/static/js/2.e95a5507.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb79158f.js",
     "static/js/2.e95a5507.chunk.js",
-    "static/css/main.1968fdfa.chunk.css",
-    "static/js/main.0f60e1a3.chunk.js"
+    "static/css/main.cb8dec08.chunk.css",
+    "static/js/main.4af43240.chunk.js"
   ]
 }
