@@ -78,29 +78,27 @@ export default class App extends Component {
 
     setNewTitle(e) {
         const { data, editable } = this.state;
-        const elem = data[editable];
         this.setState({editableTitle: e.target.value});
-        elem.title = e.target.value;
+        data[editable].title = e.target.value;
     }
 
     setNewText(e) {
         const { data, editable } = this.state;
-        const elem = data[editable];
         this.setState({editableText: e.target.value});
-        elem.text = e.target.value;
+        data[editable].text = e.target.value;
     }
 
     addNote() {
         let { data, lastTitle, lastText } = this.state;
 
-        const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours();
-        const minutes = `${new Date().getMinutes()}`.length > 1 ? new Date().getMinutes() : "0" + new Date().getMinutes();
+        const hours = `${new Date().getHours()}`.length > 1 ? new Date().getHours() : "0" + new Date().getHours(),
+            minutes = `${new Date().getMinutes()}`.length > 1 ? new Date().getMinutes() : "0" + new Date().getMinutes();
 
-        const days = `${new Date().getDate()}`.length > 1 ? new Date().getDate() : "0" + new Date().getDate();
-        const months = `${new Date().getMonth()}`.length > 1 ? new Date().getMonth() : `0${new Date().getMonth()+1}`;
+        const days = `${new Date().getDate()}`.length > 1 ? new Date().getDate() : "0" + new Date().getDate(),
+            months = `${new Date().getMonth()}`.length > 1 ? new Date().getMonth() : `0${new Date().getMonth()+1}`;
 
-        const time = `${hours}:${minutes}`;
-        const date = `${days}.${months}`;
+        const time = `${hours}:${minutes}`,
+            date = `${days}.${months}`;
 
         if(lastTitle && lastText) {
             data.push({title: lastTitle, text: lastText, date, time, id: this.id});

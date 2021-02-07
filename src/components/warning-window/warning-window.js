@@ -6,6 +6,7 @@ export default class WarningWindow extends Component {
     render() {
 
         const{ showWarningWindow } = this.props;
+        
         if(showWarningWindow) {
             return(
                 <div className="warning-window">
